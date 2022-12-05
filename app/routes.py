@@ -1,8 +1,11 @@
 from app import app
 from flask import render_template
 
+import json
+from flask_login import current_user
+import requests
 @app.route('/')
-@app.route('/home')
+
 def home():
     instructors = [{
         'name': 'Christian',

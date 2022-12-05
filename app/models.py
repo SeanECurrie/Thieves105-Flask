@@ -1,10 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_login import UserMixin
+from werkzeug.security import generate_password_hash
 
 db = SQLAlchemy()
 
 # create Models based off of our ERD
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), nullable=False, unique=True)
     email = db.Column(db.String(150), nullable=False, unique=True)
@@ -14,22 +16,59 @@ class User(db.Model):
     def __init__(self, username, email, password):
         self.username = username
         self.email = email
-        self.password = password
+        self.password = generate_password_hash(password)
 
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
 
-class Post(db.Model):
+class Post(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(150), nullable=False)
     img_url = db.Column(db.String)
     caption = db.Column(db.String(300))
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    base_hp = db.Column(db.Integer)
+    base_att = db.Column(db.Integer)
+    base_def = db.Column(db.Integer)
+    base_spec_att = db.Column(db.Integer)
+    base_spec_def = db.Column(db.Integer)
+    base_speed = db.Column(db.Integer)
+
 
     def __init__(self, title, img_url, caption, user_id):
         self.title = title
         self.img_url = img_url
         self.caption = caption
         self.user_id = user_id
+
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update_db(self):
+        db.session.commit()
+
+    def delete_from_db(self):
+        db.session.delete(self)
+        db.session.commit()
+
+class Deck(db.Model, UserMixin):
+    user_id = db.Column(db.Integer, primary_key=True)
+    pokemon = db.Column(db.JSON(), nullable=False)
+    
+    def __init__(self, user_id, pokemon):
+        self.user_id = user_id 
+        self.pokemon = pokemon
+        
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+        
+    def update_db(self):
+        db.session.commit()
+        
+    def delete_from_db(self):
+        db.session.delete(self)
+        db.session.commit()
