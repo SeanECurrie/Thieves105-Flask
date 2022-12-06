@@ -13,10 +13,9 @@ ig = Blueprint('ig', __name__, template_folder='ig_templates')
 
 
 @ig.route('/posts/create', methods=["GET", "POST"])
-
+@login_required
 def create_post():
-   
-
+    
         form = PostForm()
         if request.method == 'POST':
             if form.validate():
@@ -47,6 +46,7 @@ def create_post():
             
 @ig.route('/posts')
 def view_posts():
+    
     posts = Post.query.all()
     print(posts)
     return render_template('feed.html', posts = posts[::-1])

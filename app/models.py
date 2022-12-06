@@ -22,7 +22,7 @@ class User(db.Model, UserMixin):
         db.session.add(self)
         db.session.commit()
 
-class Post(db.Model, UserMixin):
+class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(150), nullable=False)
     img_url = db.Column(db.String)
@@ -37,11 +37,17 @@ class Post(db.Model, UserMixin):
     base_speed = db.Column(db.Integer)
 
 
-    def __init__(self, title, img_url, caption, user_id):
+    def __init__(self, title, img_url, caption, user_id,base_hp,base_att,base_def,base_spec_att,base_spec_def,base_speed):
         self.title = title
         self.img_url = img_url
         self.caption = caption
         self.user_id = user_id
+        self.base_hp = base_hp
+        self.base_att = base_att
+        self.base_def = base_def
+        self.base_spec_att = base_spec_att
+        self.base_spec_def = base_spec_def
+        self.base_speed = base_speed
 
     def save_to_db(self):
         db.session.add(self)
