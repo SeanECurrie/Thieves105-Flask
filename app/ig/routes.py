@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import current_user, login_required
 from .forms import PostForm
-from app.models import Post
+from app.models import Post, User
 import requests
 import json
 
@@ -56,8 +56,10 @@ def view_posts():
 @ig.route('/posts/<int:post_id>')
 def view_single_post(post_id):
     post = Post.query.get(post_id)
-  
-    return render_template('single_post.html', post=post)
+    if post:
+        return render_template('single_post.html', post=post)
+    else:
+        return redirect(url_for('ig.view_posts'))
 
 
 @ig.route('/posts/update/<int:post_id>', methods=['GET', 'POST'])
@@ -85,10 +87,11 @@ def update_post(post_id):
 
     
 @ig.route('/posts/delete/<int:post_id>')
-
+@login_required
 def delete_post(post_id):
     post = Post.query.get(post_id)
-    if post:
+    if current_user.id == post.user_id:
         post.delete_from_db()
-    
+    else:
+        print('You do not have permission to be here!')
     return redirect(url_for('ig.view_posts'))

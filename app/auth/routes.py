@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user
 from app.auth.forms import UserCreationForm, LoginForm
 from app.models import User
@@ -30,7 +30,7 @@ def signup():
             
     return render_template('signup.html', form=form)
 
-@auth.route('/login', methods=["GET", "POST"])
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if request.method=='POST':
@@ -38,17 +38,17 @@ def login():
             username = form.username.data
             password = form.password.data
 
-            #Query user from db
+            # Query user from db
             user = User.query.filter_by(username=username).first()
             if user:
-                
                 if check_password_hash(user.password, password):
-                    print('Logged In')
+                    flash(f'Successfully Logged In! Welcome back, {user.username}!', 'success')
                     login_user(user)
+                    return redirect(url_for('ig.view_posts'))
                 else:
-                    print('Invalid Password')
+                    flash('Invalid Password!', 'danger')
             else:
-                print('user does not exist')
+                print('User does not exist')
     return render_template('login.html', form=form)
 
 @auth.route('/logout')

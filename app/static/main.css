@@ -1,9 +1,11 @@
 .main-background{
-    background-color: #1f1f1f;
+    background-color: #323030;
+    
 }
 
 .caption-text{
     font-size: 32px;
+    font-family: "Pocket Monk";
 }
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300,700");
@@ -50,7 +52,7 @@ h1, h2, h3, h4, h5 {
   text-align: center;
   padding: 1em 1em 0;
   border-radius: 3px 3px 0 0;
-  background: black;
+  background: rgb(215, 209, 209);
 }
 .card__type {
   position: absolute;

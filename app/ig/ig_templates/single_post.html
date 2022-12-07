@@ -1,12 +1,115 @@
 {% extends 'base.html'%}
 {% block content %}
-<div class="card mx-auto m-5" style="width: 30rem;">
-    <img class="card-img-top" src="{{post.img_url}}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{post.title}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{post.author.username}}</h6>
-      <p class="card-text caption-text">{{post.caption}}</p>
+<div id="cards" >  
+
+  <figure class= "card card--{{post.type}}">
+    <div class="card__image-container">
+      <img class="card-img-top" src="{{post.img_url}}">   
     </div>
+    
+    <figure class="card__caption">
+      <h1 class="card__name">{{post.title.upper()}}</h1>
+  
+      <h3 class="card__type">
+        <td>{{post.type}}</td>
+      </h3>
+  
+      <table class="card__stats">
+        <tbody><tr>
+          <th>HP</th>
+          <td>{{post.base_hp}}</td>
+        </tr>
+        <tr>
+          <th>Attack</th>
+          <td>55</td>
+        </tr>
+        
+        <tr>
+          <th>Defense</th>
+          <td>50</td>
+        </tr>
+  
+        <tr>
+          <th>Special Attack</th>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th>Special Defense</th>
+          <td>65</td>
+        </tr>
+        <tr>
+          <th>Speed</th>  
+          <td>55</td>
+        </tr>
+      </tbody></table>
+      
+      <div class="card__abilities">
+        <h4 class="card__ability">
+          <span class="card__label.lowercase()">Ability:</span>
+          <em> {{post.caption.title()}}</em>
+        </h4>
+
+      </div>
+    </figcaption>
+  </figure>
+</div>
+
+
+<script id="card-template" type="text/x-handlebars-template">
+<figure class="card card--{{type}}">
+  <div class="card__image-container">
+    <img src="{{imageAddress}}" alt="{{name}}" class="card__image">   
+  </div>
+  
+  <figcaption class="card__caption">
+    <h1 class="card__name">{{name}}</h1>
+
+    <h3 class="card__type">e
+      {{type}}
+    </h3>
+
+    <table class="card__stats">
+      <tr>
+        <th>HP</th>
+        <td>{{hp}}</td>
+      </tr>
+      <tr>
+        <th>Attack</th>
+        <td>{{attack}}</td>
+      </tr>
+      
+      <tr>
+        <th>Defense</th>
+        <td>{{defense}}</td>
+      </tr>
+
+      <tr>
+        <th>Special Attack</th>
+        <td>{{spAttack}}</td>
+      </tr>
+      <tr>
+        <th>Special Defense</th>
+        <td>{{spDefense}}</td>
+      </tr>
+      <tr>
+        <th>Speed</th>  
+        <td>{{speed}}</td>
+      </tr>
+    </table>
+    
+    <div class="card__abilities">
+      <h4 class="card__ability">
+        <span class="card__label">Ability</span>
+        {{ability1}}
+      </h4>
+      <h4 class="card__ability">
+        <span class="card__label">Hidden Ability</span>
+        {{ability2}}
+      </h4>
+    </div>
+  </figcaption>
+</figure>
+</script>
     {% if current_user.id == post.user_id %}
     <a class="btn btn-success mx-auto mb-2" style="width: 10rem;" href="/posts/update/{{post.id}}">Update</a>
     
