@@ -35,9 +35,10 @@ class Post(db.Model):
     base_spec_att = db.Column(db.Integer)
     base_spec_def = db.Column(db.Integer)
     base_speed = db.Column(db.Integer)
+    type = db.Column(db.String(150))
 
 
-    def __init__(self, title, img_url, caption, user_id,base_hp,base_att,base_def,base_spec_att,base_spec_def,base_speed):
+    def __init__(self, title, img_url, caption, user_id,base_hp,base_att,base_def,base_spec_att,base_spec_def,base_speed, type):
         self.title = title
         self.img_url = img_url
         self.caption = caption
@@ -48,6 +49,7 @@ class Post(db.Model):
         self.base_spec_att = base_spec_att
         self.base_spec_def = base_spec_def
         self.base_speed = base_speed
+        self.type = type
 
     def save_to_db(self):
         db.session.add(self)

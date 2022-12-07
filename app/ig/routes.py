@@ -25,7 +25,7 @@ def create_post():
                 if response.ok == True:
                     data=response.json()
                     title = data["name"]
-                    img_url = data["sprites"]["front_shiny"]
+                    img_url = data["sprites"]["other"]["dream_world"]["front_default"]
                     caption = data["abilities"][0]["ability"]["name"]
                     base_hp = data["stats"][0]["base_stat"]    
                     base_att = data["stats"][1]["base_stat"]
@@ -33,11 +33,12 @@ def create_post():
                     base_spec_att = data["stats"][3]["base_stat"]
                     base_spec_def = data["stats"][4]["base_stat"]
                     base_speed = data["stats"][5]["base_stat"]
+                    type = data["types"][0]["type"]["name"]   
                     # title = form.title.data
                     # img_url = form.img_url.data
                     # caption = form.caption.data
             print(title, img_url, caption)
-            post = Post(title, img_url, caption, current_user.id,base_hp,base_att,base_def,base_spec_att,base_spec_def,base_speed)
+            post = Post(title, img_url, caption, current_user.id,base_hp,base_att,base_def,base_spec_att,base_spec_def,base_speed, type)
             post.save_to_db()
             
             return redirect(url_for('ig.view_posts'))

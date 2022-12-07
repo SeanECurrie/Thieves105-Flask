@@ -2,18 +2,18 @@
 {% block content%}
 {% for post in posts %}
 
-<div id="cards">  
+<div id="cards" >  
 
-  <figure class="card card--normal">
+  <figure class= "card card--{{post.type}}">
     <div class="card__image-container">
       <img class="card-img-top" src="{{post.img_url}}">   
     </div>
     
-    <figcaption class="card__caption">
-      <h1 class="card__name">{{post.title}}</h1>
+    <figure class="card__caption">
+      <h1 class="card__name">{{post.title.upper()}}</h1>
   
       <h3 class="card__type">
-        normal
+        <td>{{post.type}}</td>
       </h3>
   
       <table class="card__stats">
@@ -47,8 +47,8 @@
       
       <div class="card__abilities">
         <h4 class="card__ability">
-          <span class="card__label">Ability</span>
-          {{post.caption}}
+          <span class="card__label.lowercase()">Ability:</span>
+          <em> {{post.caption.title()}}</em>
         </h4>
 
       </div>
