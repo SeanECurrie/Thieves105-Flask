@@ -1,39 +1,24 @@
-1. Flask Forms (WTForms)
--- Used to accept user information from the frontend, pass it to our backend, and store it in Database.
+1. Creating our API with Flask
+-- create new api Blueprint
+(this will look very similar to ig.routes)
+-- use url_prefix instead of template_folder
+(because we just need to access the backend data)
+-- JSON
+(Javascript Object Notation)
+-- Standardized way of passing data across the web
+-- Create a .to_dict() method on Post to convert post objects to JSON format
+-- test api route
 
-2. Flask Models (SQLAlchemy)
---
+2. Create single_post_api dynamic route
 
-3. We're primarily going to be working with only the auth section today.
+3. Create create_post_api route
+-- Use Postman Application to post data to api without a frontend
+(Remember to add Header: Content-Type: 'application/json')
+(On body tab, select the raw, dropdown should be JSON)
+-- Test post request
 
-(Forms Section)
--- add login route to auth blueprint (remember to remove it from main routes)
--- polish/finish signup.html
--- pip install flask-wtf (remember to pip freeze when you add new pip installs to venv)
--- create forms.py in auth, create UserCreationForm
--- on auth.routes import the form on the signup route
--- Add SECRET_KEY to .env for security (rememeber to update your config file)
--- Add form inputs on signup.html (also, add form.hidden_tag() at the top of form)
--- GET/POST requests
--- import request on auth.routes
-
-(Models Section)
--- create models.py on root level of app
--- pip install flask-sqlalchemy
--- Create User & Post Models
--- On auth.routes instantiate/add the User
-
-(Database Section)
--- create new instance on ElephantSQL
--- add DATABASE_URL to .env (rememeber to add 'ql' after 'postgres')
--- update config file. (The Variable name must be 'SQLALCHEMY_DATABASE_URI' when using SQLAlchemy)
--- pip install flask-migrate, psycopg2 (MAC:psycopg2-binary)
--- add migrate,db imports to __init__.py
--- initialize our database to work with our Database
--- import models
--- migrate models to database
-(Terminal Commands to migrate) 
-(flask db init,flask db migrate,flask db upgrade)
-
-4. Redirect from signup to login
--- import redirect, url_for on auth.routes
+4. Additonal CRUD methods for api
+(Create = POST)
+(Read/Retrieve = GET)
+(Update = PUT/POST)
+(Delete = DELETE)

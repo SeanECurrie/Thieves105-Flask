@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 {% block content %}
+<<<<<<< HEAD
 <div id="cards" >  
 
   <figure class= "card card--{{post.type}}">
@@ -113,11 +114,27 @@
     {% if current_user.id == post.user_id %}
     
     
+=======
+<div class="card mx-auto m-5" style="width: 30rem;">
+    <img class="card-img-top" src="{{post.img_url}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{post.title}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{post.author.username}}</h6>
+      <p class="card-text caption-text">{{post.caption}}</p>
+    </div>
+    {% if current_user.id == post.user_id %}
+    <a class="btn btn-success mx-auto mb-2" style="width: 10rem;" href="/posts/update/{{post.id}}">Update</a>
+    <!-- Button trigger modal -->
+>>>>>>> 3b96f0b5f4b875a16157fd8aefeff03681de30f6
     <button type="button" class="btn btn-danger mx-auto" data-toggle="modal" data-target="#exampleModal" style="width: 10rem;">
       Delete
     </button>
 
+<<<<<<< HEAD
  
+=======
+    <!-- Modal -->
+>>>>>>> 3b96f0b5f4b875a16157fd8aefeff03681de30f6
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

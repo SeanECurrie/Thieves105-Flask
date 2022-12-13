@@ -1,5 +1,7 @@
 from app import app
 from flask import render_template
+from .models import User
+from flask_login import current_user
 
 import json
 from flask_login import current_user
@@ -18,4 +20,8 @@ def home():
             if user.id in following_set:
                 user.isFollowing = True
 
+<<<<<<< HEAD
     return render_template('index.html', users=users)
+=======
+    return render_template('index.html', users=users)
+>>>>>>> 3b96f0b5f4b875a16157fd8aefeff03681de30f6

@@ -3,31 +3,55 @@
 {% block content %}
 
 <section class="vh-100 bg-image"
+<<<<<<< HEAD
   style="background-image: url('https://www.giantbomb.com/a/uploads/original/10/103251/1711281-pokeball_wallpaper_by_deviantvicky_d343qsk.jpg');">
+=======
+  style="background-image: url('https://img.freepik.com/premium-vector/clean-geometric-background-wallpaper-design_279155-637.jpg?w=2000');">
+>>>>>>> 3b96f0b5f4b875a16157fd8aefeff03681de30f6
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
+<<<<<<< HEAD
               <h2 class="text-uppercase text-center mb-5">Catch a Pokemon</h2>
+=======
+              <h2 class="text-uppercase text-center mb-5">Create a Post!</h2>
+>>>>>>> 3b96f0b5f4b875a16157fd8aefeff03681de30f6
 
               <form method="POST">
 
                 {{ form.hidden_tag() }}
 
                 <div class="form-outline mb-4">
+<<<<<<< HEAD
                   {{ form.title(id="form3Example1cg", class='form-control form-control-lg', placeholder='Pokemon Name') }}
                 </div>
 
 
+=======
+                  {{ form.title(id="form3Example1cg", class='form-control form-control-lg', placeholder='Title') }}
+                </div>
+
+                <div class="form-outline mb-4">
+                  {{ form.img_url(id="form3Example3cg", class="form-control form-control-lg", placeholder='Image URL')}}
+                </div>
+
+                <div class="form-outline mb-4">
+                  {{ form.caption(id="form3Example4cg", class="form-control form-control-lg", placeholder='Caption')}}
+                </div>
+>>>>>>> 3b96f0b5f4b875a16157fd8aefeff03681de30f6
 
                 <div class="d-flex justify-content-center">
                   {{ form.submit_btn(class="btn btn-primary btn-block btn-lg", value='Submit')}}
                 </div>
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3b96f0b5f4b875a16157fd8aefeff03681de30f6
               </form>
 
             </div>
@@ -37,5 +61,8 @@
     </div>
   </div>
 </section>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3b96f0b5f4b875a16157fd8aefeff03681de30f6
 {% endblock %}

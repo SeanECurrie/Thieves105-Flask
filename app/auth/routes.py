@@ -17,17 +17,14 @@ def signup():
 
             print(username, email, password)
 
-            #instantiate User from models
             user = User(username, email, password)
 
-            #add user to database
+            # add user to database
             # db.session.add(user)
             # db.session.commit()
             user.save_to_db()
-
             return redirect(url_for('auth.login'))
-            
-            
+
     return render_template('signup.html', form=form)
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -54,4 +51,8 @@ def login():
 @auth.route('/logout')
 def logout():
     logout_user()
+<<<<<<< HEAD
     return redirect(url_for('auth.login'))
+=======
+    return redirect(url_for('auth.login'))
+>>>>>>> 3b96f0b5f4b875a16157fd8aefeff03681de30f6
