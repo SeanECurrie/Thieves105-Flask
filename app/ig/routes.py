@@ -95,3 +95,5 @@ def delete_post(post_id):
     else:
         print('You do not have permission to be here!')
     return redirect(url_for('ig.view_posts'))
+
+

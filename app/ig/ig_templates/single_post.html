@@ -21,25 +21,25 @@
         </tr>
         <tr>
           <th>Attack</th>
-          <td>55</td>
+          <td>{{post.base_att}}</td>
         </tr>
         
         <tr>
           <th>Defense</th>
-          <td>50</td>
+          <td>{{post.base_def}}</td>
         </tr>
   
         <tr>
           <th>Special Attack</th>
-          <td>45</td>
+          <td>{{post.base_spec_att}}</td>
         </tr>
         <tr>
           <th>Special Defense</th>
-          <td>65</td>
+          <td>{{post.base_spec_def}}</td>
         </tr>
         <tr>
           <th>Speed</th>  
-          <td>55</td>
+          <td>{{post.base_speed}}</td>
         </tr>
       </tbody></table>
       
@@ -111,7 +111,7 @@
 </figure>
 </script>
     {% if current_user.id == post.user_id %}
-    <a class="btn btn-success mx-auto mb-2" style="width: 10rem;" href="/posts/update/{{post.id}}">Update</a>
+    
     
     <button type="button" class="btn btn-danger mx-auto" data-toggle="modal" data-target="#exampleModal" style="width: 10rem;">
       Delete
